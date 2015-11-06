@@ -16,34 +16,34 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create user" do
-    assert_difference('User.count') do
-      post :create, user: { bio: @user.bio, buzz: @user.buzz, cur_dignity: @user.cur_dignity, cur_motivation: @user.cur_motivation, cur_strangepoints: @user.cur_strangepoints, email: @user.email, level: @user.level, max_dignity: @user.max_dignity, max_motivation: @user.max_motivation, max_strangepoints: @user.max_strangepoints, name: @user.name }
-    end
+  # test "should create user" do
+  #   assert_difference('User.count') do
+  #     post :create, user: { bio: @user.bio, buzz: @user.buzz, cur_dignity: @user.cur_dignity, cur_motivation: @user.cur_motivation, cur_strangepoints: @user.cur_strangepoints, email: @user.email, level: @user.level, max_dignity: @user.max_dignity, max_motivation: @user.max_motivation, max_strangepoints: @user.max_strangepoints, name: @user.name }
+  #   end
 
-    assert_redirected_to user_path(assigns(:user))
-  end
+  #   assert_redirected_to user_path(assigns(:user))
+  # end
 
-  test "should show user" do
-    get :show, id: @user
-    assert_response :success
-  end
+  # test "should show user" do
+  #   get :show, id: @user
+  #   assert_response :success
+  # end
 
-  test "should get edit" do
-    get :edit, id: @user
-    assert_response :success
-  end
+  # test "should get edit" do
+  #   get :edit, id: @user
+  #   assert_response :success
+  # end
 
-  test "should update user" do
-    patch :update, id: @user, user: { bio: @user.bio, buzz: @user.buzz, cur_dignity: @user.cur_dignity, cur_motivation: @user.cur_motivation, cur_strangepoints: @user.cur_strangepoints, email: @user.email, level: @user.level, max_dignity: @user.max_dignity, max_motivation: @user.max_motivation, max_strangepoints: @user.max_strangepoints, name: @user.name }
-    assert_redirected_to user_path(assigns(:user))
-  end
+  # test "should update user" do
+  #   patch :update, id: @user, user: { bio: @user.bio, buzz: @user.buzz, cur_dignity: @user.cur_dignity, cur_motivation: @user.cur_motivation, cur_strangepoints: @user.cur_strangepoints, email: @user.email, level: @user.level, max_dignity: @user.max_dignity, max_motivation: @user.max_motivation, max_strangepoints: @user.max_strangepoints, name: @user.name }
+  #   assert_redirected_to user_path(assigns(:user))
+  # end
 
-  test "should destroy user" do
-    assert_difference('User.count', -1) do
-      delete :destroy, id: @user
-    end
+  # test "should destroy user" do
+  #   assert_difference('User.count', -1) do
+  #     delete :destroy, id: @user
+  #   end
 
-    assert_redirected_to users_path
-  end
+  #   assert_redirected_to users_path
+  # end
 end

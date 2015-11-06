@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root  'static_pages#home'
   get 'help'    => 'static_pages#help'
-
+  get 'admin'    => 'static_pages#admin'
 
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
