@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  name: MyString
+  bio: MyText
+  level: 1
+  buzz: 1
+  max_motivation: 1
+  cur_motivation: 1
+  max_dignity: 1
+  cur_dignity: 1
+  max_strangepoints: 1
+  cur_strangepoints: 1
+
+two:
+  email: MyString
+  name: MyString
+  bio: MyText
+  level: 1
+  buzz: 1
+  max_motivation: 1
+  cur_motivation: 1
+  max_dignity: 1
+  cur_dignity: 1
+  max_strangepoints: 1
+  cur_strangepoints: 1

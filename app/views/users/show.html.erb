@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @user.bio %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @user.level %>
+</p>
+
+<p>
+  <strong>Buzz:</strong>
+  <%= @user.buzz %>
+</p>
+
+<p>
+  <strong>Max motivation:</strong>
+  <%= @user.max_motivation %>
+</p>
+
+<p>
+  <strong>Cur motivation:</strong>
+  <%= @user.cur_motivation %>
+</p>
+
+<p>
+  <strong>Max dignity:</strong>
+  <%= @user.max_dignity %>
+</p>
+
+<p>
+  <strong>Cur dignity:</strong>
+  <%= @user.cur_dignity %>
+</p>
+
+<p>
+  <strong>Max strangepoints:</strong>
+  <%= @user.max_strangepoints %>
+</p>
+
+<p>
+  <strong>Cur strangepoints:</strong>
+  <%= @user.cur_strangepoints %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
