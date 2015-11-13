@@ -1,5 +1,11 @@
-<h1>New User</h1>
+<% provide(:title, 'Sign Up') %>
+<%= render 'layouts/header_blurb' %>
 
-<%= render 'form' %>
+<div class="content">
+    <h2 class="content-subhead">Sign Up</h2>
+    <p>
+        Create an account and embark on a perilous journey from the edges of obscurity to the front page of Pitchfork!
+    </p>
 
-<%= link_to 'Back', users_path %>
+    <%= render 'form' %>
+</div>

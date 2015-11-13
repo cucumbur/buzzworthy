@@ -17,18 +17,23 @@
   </head>
   <body>
     <div id="layout">
-		    
       <%= render 'layouts/header' %>
-      <%= yield %>
+      <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: name %>
+      <% end -%>
+      <div id="main">
+        <%= yield %>
+      </div>
       <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
+      <%= console if false %>
     </div>
     
-    
+
     
     <!--Scripts-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-    <script src="js/main.js"></script>
     <!-- Google Analytics-->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

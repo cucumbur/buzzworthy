@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, :html => {:class => "pure-form pure-form-aligned"} ) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,52 +10,29 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :bio %><br>
-    <%= f.text_area :bio %>
-  </div>
-  <div class="field">
-    <%= f.label :level %><br>
-    <%= f.number_field :level %>
-  </div>
-  <div class="field">
-    <%= f.label :buzz %><br>
-    <%= f.number_field :buzz %>
-  </div>
-  <div class="field">
-    <%= f.label :max_motivation %><br>
-    <%= f.number_field :max_motivation %>
-  </div>
-  <div class="field">
-    <%= f.label :cur_motivation %><br>
-    <%= f.number_field :cur_motivation %>
-  </div>
-  <div class="field">
-    <%= f.label :max_dignity %><br>
-    <%= f.number_field :max_dignity %>
-  </div>
-  <div class="field">
-    <%= f.label :cur_dignity %><br>
-    <%= f.number_field :cur_dignity %>
-  </div>
-  <div class="field">
-    <%= f.label :max_strangepoints %><br>
-    <%= f.number_field :max_strangepoints %>
-  </div>
-  <div class="field">
-    <%= f.label :cur_strangepoints %><br>
-    <%= f.number_field :cur_strangepoints %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <fieldset>
+    <div class="field pure-control-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, :class=>"pure-input-2-3", :placeholder => "Used to activate - Please use real address" %>
+    </div>
+    <div class="field pure-control-group ">
+        <%= f.label :password %>
+        <%= f.password_field :password, :class=>"pure-input-2-3", :placeholder => "Choose a secure password" %>
+    </div>
+    <div class="field pure-control-group ">
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, :class=>"pure-input-2-3", :placeholder => "Repeat the password" %>
+    </div>
+    <div class="field pure-control-group">
+      <%= f.label :name, "Pseudonym" %>
+      <%= f.text_field :name, :class=>"pure-input-2-3", :placeholder => "Your characters' in-game name" %>
+    </div>
+    <div class="field pure-control-group">
+      <%= f.label :gender %>
+      <%= f.select :gender, User.genders.keys %>
+    </div>
+    <div class="actions pure-controls">
+      <%= f.submit "Sign Up!", class: "pure-button pure-button-primary pure-input-2-3" %>
+    </div>
+  </fieldset>
 <% end %>

@@ -1,28 +1,26 @@
 <% provide(:title, 'Log In') %>
-<div id="main">
-    <%= render 'layouts/header_blurb' %>
+<%= render 'layouts/header_blurb' %>
 
-    <div class="content">
-        <h2 class="content-subhead">Login Page</h2>
-        <p>
-            Enter your account here
-        </p>
-        
-        <%= form_for(:session, url: login_path, class:'pure-form pure-form-stacked') do |f| %>
+<div class="content">
+    <h2 class="content-subhead">Login Page</h2>
+    <p>
+        Enter your account here
+    </p>
+    
+    <%= form_for(:session, url: login_path, :html => {:class => "pure-form pure-form-stacked"} ) do |f| %>
 
-            <fieldset>
-                <legend>Login</legend>
-                <%= f.label :email %>
-                <%= f.email_field :email %>
+        <fieldset>
+            <legend>Login</legend>
+            <%= f.label :email %>
+            <%= f.email_field :email %>
 
-                <%= f.label :password %>
-                <%= f.password_field :password %>
+            <%= f.label :password %>
+            <%= f.password_field :password %>
 
-                <%= f.submit "Log in", class: "pure-button pure-button-primary" %>
-            </fieldset>
-        <% end %>
-        
-        <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+            <%= f.submit "Log in", class: "pure-button pure-button-primary" %>
+        </fieldset>
+    <% end %>
+    
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
 
-    </div>
 </div>
