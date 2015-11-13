@@ -2,22 +2,31 @@
 <%= render 'layouts/header_blurb' %>
 
 <div class="content">
-    <h2 class="content-subhead">Login Page</h2>
+    <h2 class="content-subhead">Log In</h2>
     <p>
-        Enter your account here
+        Step back into the world of reverb pedals and made-up micro-genres
     </p>
-    
-    <%= form_for(:session, url: login_path, :html => {:class => "pure-form pure-form-stacked"} ) do |f| %>
+    <%= form_for(:session, url: login_path, :html => {:class => "pure-form pure-form-aligned"} ) do |f| %>
 
         <fieldset>
-            <legend>Login</legend>
-            <%= f.label :email %>
-            <%= f.email_field :email %>
+            <legend></legend>
+            <div class="field pure-control-group">
+	            <%= f.label :email %>
+	            <%= f.email_field :email, :class=>"pure-input-2-3" %>
+						</div>
 
-            <%= f.label :password %>
-            <%= f.password_field :password %>
-
-            <%= f.submit "Log in", class: "pure-button pure-button-primary" %>
+						<div class="field pure-control-group">
+	            <%= f.label :password %>
+	            <%= f.password_field :password, :class=>"pure-input-2-3" %>
+            </div>
+            
+            <div class="actions pure-controls">
+							<%= f.label :remember_me, class: "pure-checkbox" do %>
+	        			<%= f.check_box :remember_me %><span>&nbsp; Remember me</span>
+	      			<% end %>
+	
+	            <%= f.submit "Log in", class: "pure-button pure-button-primary" %>
+            </div>      
         </fieldset>
     <% end %>
     

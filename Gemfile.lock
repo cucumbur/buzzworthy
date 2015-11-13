@@ -109,6 +109,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (2.15.3)
     pure-css-rails (0.6.0)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -198,6 +199,7 @@ DEPENDENCIES
   minitest-reporters
   normalize-rails
   pg
+  puma
   pure-css-rails
   rails (= 4.2.4)
   rails_12factor
