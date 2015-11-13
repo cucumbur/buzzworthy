@@ -1,72 +1,28 @@
-<!doctype html>
-<html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Buzzworthy</title>
-        <meta name="description" content="A browser-based online RPG about indie Music">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<% provide(:title, 'Log In') %>
+<div id="main">
+    <%= render 'layouts/header_blurb' %>
 
+    <div class="content">
+        <h2 class="content-subhead">Login Page</h2>
+        <p>
+            Enter your account here
+        </p>
+        
+        <%= form_for(:session, url: login_path, class:'pure-form pure-form-stacked') do |f| %>
 
-        <!--<link rel="stylesheet" href="css/normalize.min.css">-->
-        <!--<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">-->
-        <!--<link rel="stylesheet" href="css/main.css">-->
-        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+            <fieldset>
+                <legend>Login</legend>
+                <%= f.label :email %>
+                <%= f.email_field :email %>
 
-    </head>
-    <body>
+                <%= f.label :password %>
+                <%= f.password_field :password %>
 
-		<div id="layout">
-		    
-            <%= render 'layouts/header' %>
+                <%= f.submit "Log in", class: "pure-button pure-button-primary" %>
+            </fieldset>
+        <% end %>
+        
+        <p>New user? <%= link_to "Sign up now!", signup_path %></p>
 
-		    <div id="main">
-		        <div class="header">
-		            <h1>Buzzworthy</h1>
-		            <h2>the browser-based game where you strive to reach #peakindie</h2>
-		        </div>
-
-		        <div class="content">
-		            <h2 class="content-subhead">Login Page</h2>
-		            <p>
-		                Enter your account here
-		            </p>
-                    
-                    <%= form_for(:session, url: login_path, class:'pure-form pure-form-stacked') do |f| %>
-
-                        <fieldset>
-                            <legend>Login</legend>
-                            <%= f.label :email %>
-                            <%= f.email_field :email %>
-    
-                            <%= f.label :password %>
-                            <%= f.password_field :password %>
-    
-                            <%= f.submit "Log in", class: "pure-button pure-button-primary" %>
-                        </fieldset>
-                    <% end %>
-                    
-                    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
-
-		        </div>
-		    </div>
-		</div>
-
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
-        <script src="js/main.js"></script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-69768019-1','auto');ga('send','pageview');
-        </script>
-    </body>
-</html>
+    </div>
+</div>
