@@ -1,2 +1,4 @@
-<h1>StaticPages#admin</h1>
-<p>Find me in app/views/static_pages/admin.html.erb</p>
+<% provide(:title, 'Admin') %>
+<div class="content">
+	<%= link_to 'Write a new Newspost', new_newspost_path %>
+</div>

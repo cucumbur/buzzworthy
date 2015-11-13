@@ -45,7 +45,7 @@
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Forums</a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Account</a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Help</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Admin</a></li>
+                <% if current_user and current_user.admin? %><li class="pure-menu-item"><%= link_to "Admin", admin_path, class:'pure-menu-link' %></li><% end %>
                 <li class="pure-menu-item"><%= link_to "Logout", logout_path, method: "delete", class:'pure-menu-link' %></li>
             <% else %>
                 <li class="pure-menu-item"><%= link_to "Login", login_path, class:'pure-menu-link' %></li>

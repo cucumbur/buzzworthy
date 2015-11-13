@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="content-subhead">News</h2>
+
+
+
+  
+    <% Newspost.all.each_with_index do |newspost, i| %>
+	    <table class="pure-table" style="margin-bottom: 1em;">
+	    	<tbody>
+	      	<% rowcolor = "pure-table-odd" %>
+	      	<% rowcolor = "" if i.odd? %>
+	      	<% rowcolor_other = "pure-table-odd" if rowcolor = "" %>
+	      	<% rowcolor_other = "" if rowcolor = "pure-table-odd" %>
+	      	
+	      	<tr class="rowcolor_other">
+	      		<td><h3><%= newspost.title %></h3>
+	      		by <%= link_to User.find(newspost.user_id).name, User.find(newspost.user_id) %> on <%= newspost.created_at %></td>
+	 
+	      	</tr>
+	      	<tr class ="<%= rowcolor %>" >
+	        	<td><%= newspost.content %></td>
+	      	</tr>
+				</tbody>
+			</table>
+    <% end %>
+
+
+<br>
+<%= link_to 'New Newspost', new_newspost_path if current_user and current_user.admin? %>

@@ -6,5 +6,12 @@ class StaticPagesController < ApplicationController
   end
 
   def admin
+  	if current_user and current_user.admin?
+  		#blah
+  	else
+  		flash[:danger] = "Naughty, naughty..."
+  		redirect_to root_url
+  	end
+  	
   end
 end
