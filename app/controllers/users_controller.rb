@@ -4,7 +4,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+		if current_user and current_user.admin?
+  		@users = User.all
+		else
+  		flash[:danger] = "Naughty, naughty..."
+  		redirect_to root_url
+		end
   end
 
   # GET /users/1
@@ -74,6 +79,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :name, :bio, :password, :password_confirmation, :gender)
+      params.require(:user).permit(:email, :name, :bio, :password, :password_confirmation, :gender, :cur_motivation)
     end
 end

@@ -1,6 +1,49 @@
 <h1>Editing User</h1>
 
-<%= render 'form' %>
+<%= form_for(@user, :html => {:class => "pure-form pure-form-aligned"} ) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset>
+  	<legend></legend>
+    <div class="field pure-control-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, :class=>"pure-input-2-3", :placeholder => "Used to activate - Please use real address" %>
+    </div>
+    <div class="field pure-control-group ">
+        <%= f.label :password %>
+        <%= f.password_field :password, :class=>"pure-input-2-3", :placeholder => "Choose a secure password" %>
+    </div>
+    <div class="field pure-control-group ">
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, :class=>"pure-input-2-3", :placeholder => "Repeat the password" %>
+    </div>
+    <div class="field pure-control-group">
+      <%= f.label :name, "Pseudonym" %>
+      <%= f.text_field :name, :class=>"pure-input-2-3", :placeholder => "Your characters' in-game name" %>
+    </div>
+    <div class="field pure-control-group">
+      <%= f.label :gender %>
+      <%= f.select :gender, User.genders.keys %>
+    </div>
+    <div class="field pure-control-group">
+      <%= f.label :cur_motivation %>
+      <%= f.number_field :cur_motivation%>
+    </div>
+    <div class="actions pure-controls">
+      <%= f.submit "Apply Changes", class: "pure-button pure-button-primary pure-input-2-3" %>
+    </div>
+  </fieldset>
+<% end %>
+
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>

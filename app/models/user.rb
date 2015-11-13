@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token
-  #attr_accessor :cur_motivation, :max_motivation
+  # ATTENTION: DISALLOW EDITING CURRENT MOTIVATION  IN THE PERMIT BEFORE DEPLOY
   
   enum gender: [:female, :male, :genderqueer, :nonbinary, :other, :lizard]
   has_many :newsposts

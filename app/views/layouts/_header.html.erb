@@ -12,9 +12,9 @@
             <% if logged_in? %>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link"><%=  current_user.name %></a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Level: <%=  current_user.level %></a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-button">Motivation: <%= current_user.cur_motivation %>/<%= current_user.max_motivation %></a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-button">Dignity: <%= current_user.cur_dignity %>/<%= current_user.max_dignity %></a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-button">SP: <%= current_user.cur_strangepoints %>/<%= current_user.max_strangepoints %></a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-button" style="background-color: #EF8E35; width: <%= (current_user.cur_motivation.to_f / current_user.max_motivation) * 100 %>%">Motivation: <%= current_user.cur_motivation %>/<%= current_user.max_motivation %></a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-button" style="background-color: #EF4335; width: <%= (current_user.cur_dignity.to_f / current_user.max_dignity) * 100 %>%">Dignity: <%= current_user.cur_dignity %>/<%= current_user.max_dignity %></a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-button" style="background-color: #C42C79; width: <%= (current_user.cur_strangepoints.to_f / current_user.max_strangepoints) * 100 %>%">SP: <%= current_user.cur_strangepoints %>/<%= current_user.max_strangepoints %></a></li>
             <% else %>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Not Logged In</a></li>
             <% end %>
