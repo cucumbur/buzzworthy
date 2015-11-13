@@ -1,0 +1,36 @@
+<% provide(:title, 'Shows') %>
+<div class="header">
+    <h1>Shows</h1>
+    <h2>Time to show the world (or just the starbucks down the street) what you're made of</h2>
+</div>
+	<div class="content">
+	<%=image_tag "dungeons.gif", alt: "Punk show"%>
+	<!--<h1>Listing Dungeons</h1>-->
+	
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Name</th>
+	      <th>Description</th>
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
+	
+	  <tbody>
+	    <% @dungeons.each do |dungeon| %>
+	      <tr>
+	      	<td style = "padding-right:1em"><%= link_to dungeon.name, dungeon %></td>
+	        <td><%= dungeon.description %></td>
+	        <% if current_user.admin? %>
+		        <td style = "padding-left:3em"><%= link_to 'Edit', edit_dungeon_path(dungeon) %></td>
+		        <td><%= link_to 'Destroy', dungeon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	        <% end %>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+	
+	<br>
+	
+	<%= link_to 'New Dungeon', new_dungeon_path %>
+</div>

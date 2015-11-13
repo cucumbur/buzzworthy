@@ -1,0 +1,29 @@
+<%= form_for(@dun_event) do |f| %>
+  <% if @dun_event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dun_event.errors.count, "error") %> prohibited this dun_event from being saved:</h2>
+
+      <ul>
+      <% @dun_event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :effect %><br>
+    <%= f.text_field :effect %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

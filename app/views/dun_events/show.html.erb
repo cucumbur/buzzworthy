@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @dun_event.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @dun_event.description %>
+</p>
+
+<%= link_to 'Edit', edit_dun_event_path(@dun_event) %> |
+<%= link_to 'Back', dun_events_path %>

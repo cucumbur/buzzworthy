@@ -1,0 +1,2 @@
+module DunEventsHelper
+end

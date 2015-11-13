@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Dun Events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dun_events.each do |dun_event| %>
+      <tr>
+        <td><%= dun_event.name %></td>
+        <td><%= dun_event.description %></td>
+        <td><%= dun_event.effect %></td>
+        <td><%= link_to 'Show', dun_event %></td>
+        <td><%= link_to 'Edit', edit_dun_event_path(dun_event) %></td>
+        <td><%= link_to 'Destroy', dun_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dun event', new_dun_event_path %>
