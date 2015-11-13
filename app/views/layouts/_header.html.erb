@@ -14,10 +14,11 @@
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Level: <%=  current_user.level %></a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-button">Motivation: <%= current_user.cur_motivation %>/<%= current_user.max_motivation %></a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-button">Dignity: <%= current_user.cur_dignity %>/<%= current_user.max_dignity %></a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-button">Motivation: <%= current_user.cur_strangepoints %>/<%= current_user.max_strangepoints %></a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-button">SP: <%= current_user.cur_strangepoints %>/<%= current_user.max_strangepoints %></a></li>
             <% else %>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Not Logged In</a></li>
             <% end %>
+            <li class="pure-menu-item"><%=image_tag "small_logo.gif", alt: "Buzzworthy Logo", class:"pure-img-responsive buzz_logo" %></li>
         </ul>
     </div>
 </div>
@@ -49,6 +50,8 @@
             <% else %>
                 <li class="pure-menu-item"><%= link_to "Login", login_path, class:'pure-menu-link' %></li>
          	<% end %>
+         	
         </ul>
     </div>
 </div>
+
