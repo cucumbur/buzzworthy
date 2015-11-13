@@ -4,16 +4,10 @@ one:
   email: jguitar@example.com
   name: Jonny Guitaro
   bio: Hello I play guitar
-  level: 1
-  buzz: 1
-  max_motivation: 100
-  cur_motivation: 100
-  max_dignity: 20
-  cur_dignity: 20
-  max_strangepoints: 10
-  cur_strangepoints: 10
   gender: male
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 two:
   email: MyString

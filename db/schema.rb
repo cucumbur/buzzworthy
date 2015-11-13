@@ -11,26 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113082949) do
+ActiveRecord::Schema.define(version: 20151113084126) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "name"
     t.text     "bio"
-    t.integer  "level"
-    t.integer  "buzz"
-    t.integer  "max_motivation"
-    t.integer  "cur_motivation"
-    t.integer  "max_dignity"
-    t.integer  "cur_dignity"
-    t.integer  "max_strangepoints"
-    t.integer  "cur_strangepoints"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.integer  "level",             default: 1
+    t.integer  "buzz",              default: 0
+    t.integer  "max_motivation",    default: 100
+    t.integer  "cur_motivation",    default: 100
+    t.integer  "max_dignity",       default: 20
+    t.integer  "cur_dignity",       default: 20
+    t.integer  "max_strangepoints", default: 10
+    t.integer  "cur_strangepoints", default: 10
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "password_digest"
     t.integer  "gender"
     t.string   "remember_digest"
-    t.boolean  "admin"
+    t.boolean  "admin",             default: false
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
+    t.datetime "activated_at"
   end
 
 end

@@ -30,7 +30,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         # Handle a successfully created user save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        @user.send_activation_email
+        format.html { redirect_to root_path, notice: 'Check your email for an activation link in the next 5 minutes' }
         format.json { render :show, status: :created, location: @user }
       else
         # Handle instances where something went wrong
