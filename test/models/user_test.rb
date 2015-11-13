@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   
   def setup
-    @user = User.new(name: "Johnny Guitar", email: "jjguitar@example.com", password: "tester", password_confirmation: "tester")
+    @user = User.new(name: "Johnny Guitar", email: "jjguitar@example.com", password: "tester", password_confirmation: "tester", max_motivation:100)
   end
   
   test "should be valid" do
@@ -48,5 +48,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.authenticated?(:remember, '')
   end
   
+  test "should reset motivation" do
+  	@user.update_attribute(:cur_motivation, 1)
+    assert_equal 1, @user.cur_motivation
+    @user.reset_motivation
+		assert_equal 100, @user.cur_motivation
+  end
   
 end

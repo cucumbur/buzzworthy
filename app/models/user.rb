@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token
+  attr_accessor :cur_motivation, :max_motivation
   enum gender: [:female, :male, :genderqueer, :nonbinary, :other, :lizard]
   
   # Save / Validation stuff
@@ -57,6 +58,16 @@ class User < ActiveRecord::Base
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
   end
+  
+  
+  # Stat and Game-mechanic related methods
+  
+  
+	# Resets every users motivation to their max
+	def reset_motivation
+		self.cur_motivation = self.max_motivation
+		save!
+	end
   
   
   private
