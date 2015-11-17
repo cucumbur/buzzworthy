@@ -66,8 +66,7 @@ class User < ActiveRecord::Base
   
 	# Resets every users motivation to their max
 	def reset_motivation
-		self.cur_motivation = self.max_motivation
-		save!
+		update_attribute(:cur_motivation, :max_motivation)
 	end
   
   
