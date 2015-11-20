@@ -1,0 +1,22 @@
+<h1></h1>
+
+
+
+
+
+<% provide(:title, 'Inbox') %>
+<div class="header">
+    <h1>Inbox</h1>
+    <h2>(<%= current_user.messages.count %>)</h2>
+</div>
+<div class="content">
+	<!--<h2 class="content-subhead">asdasd</h2>-->
+	<% if current_user.messages.any? %>
+    <%= render @messages %>
+  	<%= will_paginate @messages %>
+  <% else %>
+  <p>Sorry, apparently you don't have enough friends who want to tell you something...</p>
+  <% end %>
+  <%= render 'layouts/message_form' %>
+</div>
+<br>

@@ -11,12 +11,15 @@ Rails.application.routes.draw do
   get 'shows'    		=> 'dungeons#index'
   get 'levelup'			=> 'static_pages#levelup'
 	post   'levelup'   => 'users#apply_level_up' 
+	get	'inbox'				=> 'static_pages#inbox'
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  post 'users/:id' => 'users#refresh'
   resources :users
   resources :account_activations, only: [:edit]
+  resources :messages,          only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

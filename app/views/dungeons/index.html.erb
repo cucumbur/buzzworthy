@@ -32,5 +32,5 @@
 	
 	<br>
 	
-	<%= link_to 'New Dungeon', new_dungeon_path %>
+	<% if current_user.admin? %><%= link_to 'New Dungeon', new_dungeon_path %><% end %>
 </div>

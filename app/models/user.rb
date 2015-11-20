@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   enum genre: [:indierock, :indiepop, :indiefolk, :punk, :hiphop, :ambient, :chillwave, :deephouse]
   
   has_many :newsposts
+  has_many :messages, dependent: :destroy
   # Save / Validation stuff
   before_save do
   	self.email = email.downcase
@@ -110,8 +111,19 @@ class User < ActiveRecord::Base
   
 	def refresh
 		update_attribute(:cur_dignity, self.max_dignity)
-		update_attribute(:cur_motivation, self.cur_motivation)
+		update_attribute(:cur_motivation, self.max_motivation)
 		update_attribute(:cur_strangepoints, self.max_strangepoints)
+	end
+	
+	def unread_messages?
+		# (theres gotta be a better ruby-esque way to do this)
+		messages = self.messages
+		msg_count = 0
+		messages.each do |msg|
+			msg_count += 1 if !(msg.read)
+		end
+		return true if msg_count > 0
+		false
 	end
   
   private

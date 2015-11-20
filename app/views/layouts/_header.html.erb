@@ -26,12 +26,18 @@
                 <li class="pure-menu-item"><a href="#" class="pure-button" style="background-color: #C42C79; width: <%= (current_user.cur_strangepoints.to_f / current_user.max_strangepoints) * 100 %>%">SP: <%= current_user.cur_strangepoints %>/<%= current_user.max_strangepoints %></a></li>
             		<li class="pure-menu-item"><a href="#" class="pure-menu-link"></a></li>
             		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:120%"><%=  current_user.money %> Buzzcoins</a></li>
+            		<% if current_user.unread_messages? and !(params[:action] == "inbox") %>
+                	<li class="pure-menu-item">
+	                	<%= link_to "<span class=\"text-flash-one\">UNREAD</span> <span class=\"text-flash-two\">MESSAGES!</span>".html_safe, inbox_path, class:'pure-menu-link', style: "text-align:center; font-size:120%; background-color:white"%>
+	              	</li>
+                <% end %>
             		<li class="pure-menu-item"><a href="#" class="pure-menu-link"></a></li>
-            		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:100%">Verve: <%=  current_user.verve %></a></li>
-            		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:100%">Heart: <%=  current_user.heart %></a></li>
-            		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:100%">Allure: <%=  current_user.allure %></a></li>
-            		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:100%">Strangeness: <%=  current_user.strangeness %></a></li>
-            		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:100%">Serendipity: <%=  current_user.serendipity %></a></li>
+            		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="font-size:100%">
+            			Verve: <%=  current_user.verve %><br>
+            			Heart: <%=  current_user.heart %><br>
+	            		Allure: <%=  current_user.allure %><br>
+	            		Strangeness: <%=  current_user.strangeness %><br>
+	            		Serendipity: <%=  current_user.serendipity %></a></li>
             <% else %>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Not Logged In</a></li>
             <% end %>
@@ -58,7 +64,8 @@
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Studio</a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Band</a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Label</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Directory</a></li>
+                <li class="pure-menu-item"><%= link_to "Directory", users_path, class:'pure-menu-link' %></li>
+                <li class="pure-menu-item"><%= link_to "Mail", inbox_path, class:'pure-menu-link' %></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Forums</a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Account</a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Help</a></li>

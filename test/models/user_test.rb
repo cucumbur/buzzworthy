@@ -61,15 +61,12 @@ class UserTest < ActiveSupport::TestCase
   	assert_equal 39810, User.exp_to_reach_level(15)
   end
   
-  test "leveling up should increase level and carry over extra buzz" do
+  test "level_up? should report accurately" do
   	@user.buzz = 1
   	assert_equal 1, @user.level
   	assert_not @user.level_up?
   	@user.buzz = 105
   	assert @user.level_up?
-  	assert_equal 2, @user.level
-  	assert_equal 5, @user.buzz
-  	assert_equal 2, @user.upgrade_points
   end
   
   test "reviving should restore half of dignity and zero buzz" do

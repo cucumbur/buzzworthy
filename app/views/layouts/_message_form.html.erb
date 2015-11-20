@@ -1,0 +1,12 @@
+<%= form_for(@message) do |f| %>
+  <div class="">
+    <%= f.text_field :subject, placeholder: "Subject..." %>
+  </div>
+  <div class="">
+    <%= f.text_area :content, placeholder: "Message..." %>
+  </div>
+  <div class="">
+    <%= number_field_tag :send_to_id, placeholder: "User ID" %>
+  </div>
+  <%= f.submit "Post", class: "" %>
+<% end %>

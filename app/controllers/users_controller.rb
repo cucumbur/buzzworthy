@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :refresh]
+  before_action :logged_in_user, only: [:index, :create, :update, :destroy]
+  before_action :admin_user, only: [:destroy]
 
   # GET /users
   # GET /users.json
   def index
 		if current_user and current_user.admin?
-  		@users = User.all
+  		#@users = User.all
+  		@users = User.paginate(page: params[:page])
 		else
   		flash[:danger] = "Naughty, naughty..."
   		redirect_to root_url
@@ -69,6 +72,12 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def refresh
+  	@user.refresh
+  	flash[:success] = "User refreshed." 
+  	redirect_to root_path
+  end
 
 	# Called after the user fills out the leveling up upgrade form
 	# Should let them select EXACTLY AS many stats as they have upgrade points (default 2)
@@ -89,12 +98,15 @@ class UsersController < ApplicationController
 		(@user.update_attribute(:strangeness, @user.strangeness + 1); num_upgraded += 1) if params[:strangeness] == '1' and num_upgraded < max_upgrade
 		(@user.update_attribute(:serendipity, @user.serendipity + 1); num_upgraded += 1) if params[:serendipity] == '1' and num_upgraded < max_upgrade
 		
+		# The line below is the hardcoded verve upgrade in lieu of real genre upgrades
+		@user.update_attribute(:verve, @user.verve + 1)
+		
 		#@user.update_attribute(:upgrade_points, max_upgrade-num_upgraded)
 		
 		@user.update_attribute(:buzz, @user.buzz - User.exp_to_reach_level(@user.level + 1) )
 		@user.update_attribute(:level, @user.level+1)
 		
-		flash[:danger] = "You aren't allowed to choose more than two, so only your first two choices were upgraded."
+		# flash[:danger] = "You aren't allowed to choose more than two, so only your first two choices were upgraded." 
 		redirect_to @user, notice: 'Nice, you upgraded your stats!'
 	end
 

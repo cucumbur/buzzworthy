@@ -1,0 +1,12 @@
+<table class="pure-table" style="margin-bottom: 1em;">
+	<tbody>
+  	<tr class="pure-table-odd">
+  		<td><h3><%= message.subject %></h3>
+  		from <%= link_to User.find(1).name, User.find(1) %> on <%= message.created_at %></td>
+
+  	</tr>
+  	<tr class ="" >
+    	<td><%= message.content %></td>
+  	</tr>
+	</tbody>
+</table>
