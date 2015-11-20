@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113150847) do
+ActiveRecord::Schema.define(version: 20151120030116) do
 
   create_table "dun_events", force: :cascade do |t|
     t.string   "name"
@@ -57,6 +57,13 @@ ActiveRecord::Schema.define(version: 20151113150847) do
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
+    t.integer  "money",             default: 0
+    t.integer  "verve",             default: 2
+    t.integer  "heart",             default: 2
+    t.integer  "allure",            default: 2
+    t.integer  "strangeness",       default: 2
+    t.integer  "serendipity",       default: 2
+    t.integer  "upgrade_points",    default: 0
   end
 
 end

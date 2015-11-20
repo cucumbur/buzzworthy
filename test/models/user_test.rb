@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   
   def setup
-    @user = User.new(name: "Johnny Guitar", email: "jjguitar@example.com", password: "tester", password_confirmation: "tester", max_motivation:100)
+    @user = User.new(name: "Johnny Guitar", email: "jjguitar@example.com", password: "tester", password_confirmation: "tester", max_motivation:100, upgrade_points:0)
   end
   
   test "should be valid" do
@@ -53,6 +53,23 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 1, @user.cur_motivation
     @user.reset_motivation
 		assert_equal 100, @user.cur_motivation
+  end
+  
+  test "exp_to_reach_level should properly calculate the experience-level curve" do
+  	assert_equal 0, User.exp_to_reach_level(1)
+  	assert_equal 100, User.exp_to_reach_level(2)
+  	assert_equal 39810, User.exp_to_reach_level(15)
+  end
+  
+  test "leveling up" do
+  	@user.buzz = 1
+  	assert_equal 1, @user.level
+  	assert_not @user.level_up?
+  	@user.buzz = 105
+  	assert @user.level_up?
+  	assert_equal 2, @user.level
+  	assert_equal 5, @user.buzz
+  	assert_equal 2, @user.upgrade_points
   end
   
 end

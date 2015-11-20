@@ -14,6 +14,13 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
   
+  # CONSTANTS
+  def self.exp_to_reach_level(level)
+  	return 0 if (level == 1)
+  	( 100 ** (1 + ( (level-2) /10.0) ) ).to_i
+  end
+  
+  
   # Returns the hash digest of the given string.
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -64,9 +71,24 @@ class User < ActiveRecord::Base
   # Stat and Game-mechanic related methods
   
   
-	# Resets every users motivation to their max
+	# Resets this one users motivation to their max
 	def reset_motivation
-		update_attribute(:cur_motivation, :max_motivation)
+		update_attribute(:cur_motivation, self.max_motivation)
+	end
+  
+	# Checks to see if the user has enough experience to level up. 
+	# If they do, add two points to their upgrade quota and show an alert
+	# that will take them to the upgrade page
+	def level_up?
+		return false if self.level == 15
+		if self.buzz >= User.exp_to_reach_level(self.level+1)
+			update_attribute(:buzz, self.buzz - User.exp_to_reach_level(self.level + 1) )
+			update_attribute(:level, self.level+1)
+			update_attribute(:upgrade_points, self.upgrade_points + 2)
+			true
+		else
+			false
+		end
 	end
   
   

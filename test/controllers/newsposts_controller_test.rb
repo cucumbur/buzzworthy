@@ -11,10 +11,10 @@ class NewspostsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:newsposts)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
+  # test "should get new" do
+  #   get :new
+  #   assert_response :success
+  # end
 
   test "should create newspost" do
     assert_difference('Newspost.count') do
@@ -29,10 +29,10 @@ class NewspostsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, id: @newspost
-    assert_response :success
-  end
+  # test "should get edit" do
+  #   get :edit, id: @newspost
+  #   assert_response :success
+  # end
 
   test "should update newspost" do
     patch :update, id: @newspost, newspost: { content: @newspost.content, user_id: @newspost.user_id }

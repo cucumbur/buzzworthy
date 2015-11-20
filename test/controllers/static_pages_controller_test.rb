@@ -11,9 +11,9 @@ class StaticPagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get admin" do
-    get :admin
-    assert_response :success
-  end
+  # test "should get admin" do
+  #   get :admin
+  #   assert_response :success
+  # end
 
 end
