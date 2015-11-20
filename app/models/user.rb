@@ -98,7 +98,8 @@ class User < ActiveRecord::Base
 	
 	# Called when the player is dead. Restores dignity to half, and sets buzz to 0
 	def revive
-		update(:cur_dignity => (self.max_dignity / 2).to_i, :buzz => 0)
+		update_attribute(:cur_dignity, (self.max_dignity / 2).to_i)
+		update_attribute(:buzz, 0)
 	end
 	
 	def dead?

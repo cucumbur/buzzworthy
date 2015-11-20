@@ -78,7 +78,13 @@ class UserTest < ActiveSupport::TestCase
   	@user.revive
   	assert_equal @user.max_dignity / 2, @user.cur_dignity
   	assert_equal 0, @user.buzz
-  	
+  end
+  
+  test "dead should report whether or not the player has any dignity" do
+  	@user.cur_dignity = 20
+  	assert_not @user.dead?
+  	@user.cur_dignity = 0
+  	assert @user.dead?
   end
   
 end
