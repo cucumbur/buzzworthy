@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
 	
 	# Splash page / news page
   def home
-  	redirect_to dead_path if current_user.dead?
+  	redirect_to dead_path if current_user and  current_user.dead?
   end
 
 	# Help, FAQ and support page
