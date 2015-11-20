@@ -46,4 +46,10 @@ class DungeonsControllerTest < ActionController::TestCase
 
     assert_redirected_to dungeons_path
   end
+  
+  test "effects should work  as expected" do
+  	# none yet
+  end
+  
+  
 end
