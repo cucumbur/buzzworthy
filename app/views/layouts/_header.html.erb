@@ -10,11 +10,16 @@
         <a class="pure-menu-heading" href="#">Profile</a>
         <ul class="pure-menu-list">
             <% if logged_in? %>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link"><%=  current_user.name %></a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Level: <%=  current_user.level %></a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:150%"><%=  current_user.name %></a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:120%">Level <%=  current_user.level %></a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-button" style="background-color: #EEB436; width: <%= (current_user.buzz.to_f / (User.exp_to_reach_level(current_user.level + 1) )) * 100 %>%">Buzz: <%= current_user.buzz %>/<%= User.exp_to_reach_level(current_user.level + 1) %></a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link"></a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-button" style="background-color: #EF8E35; width: <%= (current_user.cur_motivation.to_f / current_user.max_motivation) * 100 %>%">Motivation: <%= current_user.cur_motivation %>/<%= current_user.max_motivation %></a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link"></a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-button" style="background-color: #EF4335; width: <%= (current_user.cur_dignity.to_f / current_user.max_dignity) * 100 %>%">Dignity: <%= current_user.cur_dignity %>/<%= current_user.max_dignity %></a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-button" style="background-color: #C42C79; width: <%= (current_user.cur_strangepoints.to_f / current_user.max_strangepoints) * 100 %>%">SP: <%= current_user.cur_strangepoints %>/<%= current_user.max_strangepoints %></a></li>
+            		<li class="pure-menu-item"><a href="#" class="pure-menu-link"></a></li>
+            		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:120%"><%=  current_user.money %> Buzzcoins</a></li>
             <% else %>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Not Logged In</a></li>
             <% end %>
@@ -34,17 +39,17 @@
         <ul class="pure-menu-list">
             <li class="pure-menu-item"><%= link_to "Home", root_path,  class: 'pure-menu-link' %></li>
             <% if logged_in? %>
-                <li class="pure-menu-item unused-link"><a href="#" class="pure-menu-link">Artist</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Items</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Downtown</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Artist</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Items</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Downtown</a></li>
                 <li class="pure-menu-item"><%= link_to "Shows", shows_path, class:'pure-menu-link' %></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Studio</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Band</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Label</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Directory</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Forums</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Account</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Help</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Studio</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Band</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Label</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Directory</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Forums</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Account</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Help</a></li>
                 <% if current_user and current_user.admin? %><li class="pure-menu-item"><%= link_to "Admin", admin_path, class:'pure-menu-link' %></li><% end %>
                 <li class="pure-menu-item"><%= link_to "Logout", logout_path, method: "delete", class:'pure-menu-link' %></li>
             <% else %>
