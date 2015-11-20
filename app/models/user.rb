@@ -5,7 +5,12 @@ class User < ActiveRecord::Base
   enum gender: [:female, :male, :genderqueer, :nonbinary, :other, :lizard]
   has_many :newsposts
   # Save / Validation stuff
-  before_save { self.email = email.downcase }
+  before_save do
+  	self.email = email.downcase
+  	if self.cur_dignity > self.max_dignity
+  		self.cur_dignity = self.max_dignity
+  	end
+  end
   before_create :create_activation_digest
   # Must have email and username, and they must be reasonable length. Bio not necessary. Stats automatically created.
   validates :name, presence: true, length: { maximum: 25 }
@@ -89,6 +94,15 @@ class User < ActiveRecord::Base
 		else
 			false
 		end
+	end
+	
+	# Called when the player is dead. Restores dignity to half, and sets buzz to 0
+	def revive
+		update(:cur_dignity => (self.max_dignity / 2).to_i, :buzz => 0)
+	end
+	
+	def dead?
+		self.cur_dignity <= 0
 	end
   
   
