@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120030116) do
+ActiveRecord::Schema.define(version: 20151120062835) do
 
   create_table "dun_events", force: :cascade do |t|
     t.string   "name"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20151120030116) do
     t.integer  "strangeness",       default: 2
     t.integer  "serendipity",       default: 2
     t.integer  "upgrade_points",    default: 0
+    t.integer  "genre"
   end
 
 end

@@ -70,6 +70,35 @@ class UsersController < ApplicationController
     end
   end
 
+	# Called after the user fills out the leveling up upgrade form
+	# Should let them select EXACTLY AS many stats as they have upgrade points (default 2)
+	# no more, no less, and apply genre level up bonuses
+	def apply_level_up
+		@user = current_user
+		num_upgraded = 0
+		#max_upgrade = @user.upgrade_points
+		max_upgrade = 2
+		
+		(@user.update_attribute(:max_motivation, @user.max_motivation + 5); num_upgraded += 1) if params[:motivation] == '1' and num_upgraded < max_upgrade
+		(@user.update_attribute(:max_dignity, @user.max_dignity + 5); num_upgraded += 1) if params[:dignity] == '1' and num_upgraded < max_upgrade
+		(@user.update_attribute(:max_strangepoints, @user.max_strangepoints + 5); num_upgraded += 1) if params[:strangepoints] == '1' and num_upgraded < max_upgrade
+		
+		(@user.update_attribute(:verve, @user.verve + 1); num_upgraded += 1) if params[:verve] == '1' and num_upgraded < max_upgrade
+		(@user.update_attribute(:heart, @user.heart + 1); num_upgraded += 1) if params[:heart] == '1' and num_upgraded < max_upgrade
+		(@user.update_attribute(:allure, @user.allure + 1); num_upgraded += 1) if params[:allure] == '1' and num_upgraded < max_upgrade
+		(@user.update_attribute(:strangeness, @user.strangeness + 1); num_upgraded += 1) if params[:strangeness] == '1' and num_upgraded < max_upgrade
+		(@user.update_attribute(:serendipity, @user.serendipity + 1); num_upgraded += 1) if params[:serendipity] == '1' and num_upgraded < max_upgrade
+		
+		#@user.update_attribute(:upgrade_points, max_upgrade-num_upgraded)
+		
+		@user.update_attribute(:buzz, @user.buzz - User.exp_to_reach_level(@user.level + 1) )
+		@user.update_attribute(:level, @user.level+1)
+		
+		flash[:danger] = "You aren't allowed to choose more than two, so only your first two choices were upgraded."
+		redirect_to @user, notice: 'Nice, you upgraded your stats!'
+	end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

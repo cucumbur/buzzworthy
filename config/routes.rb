@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'admin'    => 'static_pages#admin'
   get 'dead'		=> 'static_pages#dead'
   get 'shows'    		=> 'dungeons#index'
+  get 'levelup'			=> 'static_pages#levelup'
+	post   'levelup'   => 'users#apply_level_up' 
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

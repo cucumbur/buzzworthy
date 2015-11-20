@@ -7,11 +7,17 @@
 <!--the user info sidebar-->
 <div id="menu">
     <div class="pure-menu">
-        <a class="pure-menu-heading" href="#">Profile</a>
+        <a class="pure-menu-heading" href="#" style="text-align:center">Profile</a>
         <ul class="pure-menu-list">
             <% if logged_in? %>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:150%"><%=  current_user.name %></a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:120%">Level <%=  current_user.level %></a></li>
+                <% if current_user.level_up? %>
+                	<li class="pure-menu-item">
+	                	<%= link_to "<span class=\"text-flash-one\">CLICK TO</span> <span class=\"text-flash-two\">LEVEL UP!</span>".html_safe, levelup_path, class:'pure-menu-link', style: "text-align:center; font-size:120%; background-color:white"%>
+	              	</li>
+                <% end %>
+                
                 <li class="pure-menu-item"><a href="#" class="pure-button" style="background-color: #EEB436; width: <%= (current_user.buzz.to_f / (User.exp_to_reach_level(current_user.level + 1) )) * 100 %>%">Buzz: <%= current_user.buzz %>/<%= User.exp_to_reach_level(current_user.level + 1) %></a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link"></a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-button" style="background-color: #EF8E35; width: <%= (current_user.cur_motivation.to_f / current_user.max_motivation) * 100 %>%">Motivation: <%= current_user.cur_motivation %>/<%= current_user.max_motivation %></a></li>
@@ -20,6 +26,12 @@
                 <li class="pure-menu-item"><a href="#" class="pure-button" style="background-color: #C42C79; width: <%= (current_user.cur_strangepoints.to_f / current_user.max_strangepoints) * 100 %>%">SP: <%= current_user.cur_strangepoints %>/<%= current_user.max_strangepoints %></a></li>
             		<li class="pure-menu-item"><a href="#" class="pure-menu-link"></a></li>
             		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:120%"><%=  current_user.money %> Buzzcoins</a></li>
+            		<li class="pure-menu-item"><a href="#" class="pure-menu-link"></a></li>
+            		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:100%">Verve: <%=  current_user.verve %></a></li>
+            		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:100%">Heart: <%=  current_user.heart %></a></li>
+            		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:100%">Allure: <%=  current_user.allure %></a></li>
+            		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:100%">Strangeness: <%=  current_user.strangeness %></a></li>
+            		<li class="pure-menu-item"><a href="#" class="pure-menu-link" style="text-align:center; font-size:100%">Serendipity: <%=  current_user.serendipity %></a></li>
             <% else %>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Not Logged In</a></li>
             <% end %>

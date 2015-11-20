@@ -33,5 +33,14 @@ class StaticPagesController < ApplicationController
   	end
   end
   
+  # Leveling up page
+  # Automatically apply upgrades based on genre and let them allocate their upgrade points
+  # the user must use ALL upgrade points so they cant get the genre-perks multiple times
+  def levelup
+  	return redirect_to root_path if !current_user
+  	return redirect_to root_path, :alert => "You dont have enough buzz!" if !current_user.level_up?
+
+  end
+  
   
 end

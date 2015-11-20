@@ -1,0 +1,68 @@
+<% provide(:title, 'Level Up') %>
+<div class="header">
+    <h1>Level Up!</h1>
+</div>
+
+<div class="content">
+    <p>
+        Choose how you want to spend your 2 upgrade points, which will be added to your character along with any bonuses due to your genre.
+        If you select more than two, only the first two will be applied. For descriptions of what the various stats do, visit the
+        <%= link_to "help.", help_path, method: "get" %>
+    </p>
+    <p>
+    	Your genre is <%= current_user.genre %>, so you get an extra +1 to Verve.
+    </p>
+    <%= form_tag( (levelup_path :method => 'POST'), :class => "pure-form" ) do %>
+
+        <fieldset>
+            <legend></legend>
+            
+            <label for="motivation" class="pure-checkbox">
+        		<%= check_box_tag "motivation" %>
+        			Max Motivation (+5)
+    				</label>
+            
+	          <label for="dignity" class="pure-checkbox">
+        		<%= check_box_tag "dignity"%>
+        			Max Dignity (+5)
+    				</label>
+    				
+    				<label for="strangepoints" class="pure-checkbox">
+        		<%= check_box_tag "strangepoints"%>
+        			Max Strangepoints (+5)
+    				</label>
+    				<br>
+    				
+    				<label for="verve" class="pure-checkbox">
+        		<%= check_box_tag "verve"%>
+        			Verve (+1) <span style="color:green">(+1)</span>
+    				</label>
+
+	          <label for="heart" class="pure-checkbox">
+        		<%= check_box_tag "heart"%>
+        			Heart (+1)
+    				</label>
+    				
+    				<label for="allure" class="pure-checkbox">
+        		<%= check_box_tag "allure"%>
+        			Allure (+1)
+    				</label>
+    				
+    				<label for="strangeness" class="pure-checkbox">
+        		<%= check_box_tag "strangeness"%>
+        			Strangeness (+1)
+    				</label>
+    				
+    				<label for="serendipity" class="pure-checkbox">
+        		<%= check_box_tag "serendipity"%>
+        			Serendipity (+1)
+    				</label>
+    				<br>
+
+            <div class="actions pure-controls">
+	            <%= submit_tag "Level up!", class: "pure-button pure-button-primary" %>
+            </div>      
+        </fieldset>
+    <% end %>
+
+</div>

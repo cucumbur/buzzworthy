@@ -100,6 +100,9 @@ class DungeonsController < ApplicationController
 				when "fund"
 					updated_money = current_user.money + effect_value.to_i
 					current_user.update_column(:money, updated_money)
+				when "buzz"
+					updated_buzz = current_user.buzz + effect_value.to_i
+					current_user.update_column(:buzz, updated_buzz)
 				end
 				
 			end

@@ -11,7 +11,7 @@
     </div>
   <% end %>
   <fieldset>
-  	<legend></legend>
+  	<legend>Account Info</legend>
     <div class="field pure-control-group">
       <%= f.label :email %>
       <%= f.text_field :email, :class=>"pure-input-2-3", :placeholder => "Used to activate - Please use real address" %>
@@ -24,6 +24,7 @@
         <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.password_field :password_confirmation, :class=>"pure-input-2-3", :placeholder => "Repeat the password" %>
     </div>
+    <legend>Character Info</legend>
     <div class="field pure-control-group">
       <%= f.label :name, "Pseudonym" %>
       <%= f.text_field :name, :class=>"pure-input-2-3", :placeholder => "Your characters' in-game name" %>
@@ -31,6 +32,14 @@
     <div class="field pure-control-group">
       <%= f.label :gender %>
       <%= f.select :gender, User.genders.keys %>
+    </div>
+    <div class="field pure-control-group">
+      <%= f.label :genre %>
+      <%= f.select :genre, User.genres.keys %>
+    </div>
+    <div class="field pure-control-group">
+      <%= f.label :name, "Pseudonym" %>
+      <%= f.text_area :bio, :class=>"pure-input-2-3", :placeholder => "Your characters' bio. (Optional)" %>
     </div>
     <div class="actions pure-controls">
       <%= f.submit "Sign Up!", class: "pure-button pure-button-primary pure-input-2-3" %>

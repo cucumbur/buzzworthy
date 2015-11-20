@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # ATTENTION: DISALLOW EDITING CURRENT MOTIVATION  IN THE PERMIT BEFORE DEPLOY
   
   enum gender: [:female, :male, :genderqueer, :nonbinary, :other, :lizard]
+  enum genre: [:indierock, :indiepop, :indiefolk, :punk, :hiphop, :ambient, :chillwave, :deephouse]
+  
   has_many :newsposts
   # Save / Validation stuff
   before_save do
@@ -87,9 +89,9 @@ class User < ActiveRecord::Base
 	def level_up?
 		return false if self.level == 15
 		if self.buzz >= User.exp_to_reach_level(self.level+1)
-			update_attribute(:buzz, self.buzz - User.exp_to_reach_level(self.level + 1) )
-			update_attribute(:level, self.level+1)
-			update_attribute(:upgrade_points, self.upgrade_points + 2)
+			# update_attribute(:buzz, self.buzz - User.exp_to_reach_level(self.level + 1) )
+			# update_attribute(:level, self.level+1)
+			# update_attribute(:upgrade_points, self.upgrade_points + 2)
 			true
 		else
 			false
@@ -106,6 +108,11 @@ class User < ActiveRecord::Base
 		self.cur_dignity <= 0
 	end
   
+	def refresh
+		update_attribute(:cur_dignity, self.max_dignity)
+		update_attribute(:cur_motivation, self.cur_motivation)
+		update_attribute(:cur_strangepoints, self.max_strangepoints)
+	end
   
   private
 
