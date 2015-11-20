@@ -10,15 +10,20 @@ class DungeonsController < ApplicationController
   # GET /dungeons/1
   def show
 		if current_user
-			redirect_to dead_path if current_user.dead?
-			# Get a random event from the events stack
-			@random_event = DunEvent.offset(rand(DunEvent.count)).first
-			handle_effect(@random_event.effect)
-			
-			# Knock off 10 motivation
-  		updated_motivation = current_user.cur_motivation - 10
-			current_user.update_attribute(:cur_motivation, updated_motivation)
-			
+			if current_user.dead?
+				redirect_to dead_path
+			elsif current_user.cur_motivation < 10
+				flash[:notice] = "You don't have enough motivation to go there."
+				redirect_to shows_path
+			else
+				# Get a random event from the events stack
+				@random_event = DunEvent.offset(rand(DunEvent.count)).first
+				handle_effect(@random_event.effect)
+				
+				# Knock off 10 motivation
+	  		updated_motivation = current_user.cur_motivation - 10
+				current_user.update_attribute(:cur_motivation, updated_motivation)
+			end
 		else
   		flash[:danger] = "You must be logged in to do that."
   		redirect_to root_url
