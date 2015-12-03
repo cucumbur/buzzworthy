@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120115416) do
+ActiveRecord::Schema.define(version: 20151203205740) do
 
   create_table "dun_events", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20151120115416) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "read",       default: false
+    t.integer  "from_id"
   end
 
   add_index "messages", ["user_id", "created_at"], name: "index_messages_on_user_id_and_created_at"

@@ -1,6 +1,7 @@
 class NewspostsController < ApplicationController
   before_action :set_newspost, only: [:show, :edit, :update, :destroy]
-
+	include ApplicationHelper
+	
   # GET /newsposts
   def index
     @newsposts = Newspost.all
@@ -53,6 +54,6 @@ class NewspostsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def newspost_params
-      params.require(:newspost).permit(:content, :user_id)
+      params.require(:newspost).permit(:content, :user_id, :title)
     end
 end

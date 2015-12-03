@@ -1,5 +1,24 @@
-<% provide(:title, 'Admin') %>
+<% provide(:title, 'Admin Panel') %>
+<div class="header">
+    <h1>Admin Control Panel</h1>
+    <!--<h2>the browser-based game where you strive to reach #peakindie</h2>-->
+</div>
 <div class="content">
+	
+	<h2>Users</h2>
+	<%= link_to 'Manage Users', users_path %><br>
+	
+	<h2>Dungeons</h2>
+	<%= link_to 'Manage Dungeons', dungeons_path %><br>
+	<%= link_to 'Create New Dungeon', new_dungeon_path %><br>
+	<%= link_to 'Manage Events', dun_events_path %><br>
+	<%= link_to 'Create New Event', new_dun_event_path %><br>
+	
+	<h2>Newsposts</h2>
+	<%= link_to 'Manage Newsposts', newsposts_path %><br>
 	<%= link_to 'Write a new Newspost', new_newspost_path %><br>
-	<%= link_to 'Manage Users', users_path %>
+	
+	<h2>Miscallaneous</h2>
+	<%= link_to "Reset All Users' Motivation", resetmotivation_path %><br>
+	
 </div>

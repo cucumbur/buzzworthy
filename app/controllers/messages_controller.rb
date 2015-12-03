@@ -18,7 +18,8 @@ class MessagesController < ApplicationController
   private
 
     def message_params
-      params.require(:message).permit(:content, :subject)
+    	newid = current_user.id
+      params.require(:message).permit(:content, :subject).merge(:from_id => newid)
     end
     
     

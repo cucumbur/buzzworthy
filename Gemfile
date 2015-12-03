@@ -38,6 +38,7 @@ gem 'normalize-rails'
 gem 'faker'
 gem 'whenever'
 gem 'will_paginate'
+gem 'gemoji'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

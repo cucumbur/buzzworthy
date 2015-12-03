@@ -21,5 +21,5 @@
 
 # Nightly motivation reset
 every 1.day, :at => '12:00 am' do
-  runner "User.all.each do {|user| user.reset_motivation}"
+  runner "User.all.each {|user| user.reset_motivation}"
 end

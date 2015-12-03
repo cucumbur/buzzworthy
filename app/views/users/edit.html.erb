@@ -27,12 +27,18 @@
         <%= f.password_field :password_confirmation, :class=>"pure-input-2-3", :placeholder => "Repeat the password" %>
     </div>
     <div class="field pure-control-group">
-      <%= f.label :name, "Pseudonym" %>
-      <%= f.text_field :name, :class=>"pure-input-2-3", :placeholder => "Your characters' in-game name" %>
-    </div>
-    <div class="field pure-control-group">
       <%= f.label :gender %>
       <%= f.select :gender, User.genders.keys %>
+    </div>
+    
+    
+    <!-- admin stuff -->
+    <!-- admin stuff -->
+    <% if current_user.admin? %>
+    
+    <div class="field pure-control-group">
+      <%= f.label :name, "Pseudonym" %>
+      <%= f.text_field :name, :class=>"pure-input-2-3", :placeholder => "Your characters' in-game name" %>
     </div>
     <div class="field pure-control-group">
       <%= f.label :cur_motivation %>
@@ -42,6 +48,12 @@
       <%= f.label :activated %>
     	<%= f.check_box :activated %>
     </div>
+    
+    
+    <% end %>
+    <!-- admin stuff -->
+    <!-- admin stuff -->
+    
     <div class="actions pure-controls">
       <%= f.submit "Apply Changes", class: "pure-button pure-button-primary pure-input-2-3" %>
     </div>

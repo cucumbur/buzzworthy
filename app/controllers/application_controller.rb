@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   
+  def reset_all_users_motivation
+  	User.all.each { |user| user.reset_motivation }
+  	flash[:notice] = "You refreshed all players' motivation."
+  	redirect_to admin_path
+  end
+  
+  
   private
   
   	# Before filters

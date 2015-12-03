@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  post 'users/:id' => 'users#refresh'
+  post 'users/:id' => 'users#refresh' # is this necessary?
+  get 'resetmotivation' => 'application#reset_all_users_motivation' 
   resources :users
   resources :account_activations, only: [:edit]
   resources :messages,          only: [:create, :destroy]

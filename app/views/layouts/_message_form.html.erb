@@ -1,12 +1,17 @@
-<%= form_for(@message) do |f| %>
-  <div class="">
-    <%= f.text_field :subject, placeholder: "Subject..." %>
+<%= form_for(@message, :html => {:class => "pure-form pure-form-aligned"}) do |f| %>
+	<fieldset>
+  <div class="field pure-control-group">
+  	<%= label(:subject, "Subject") %>
+    <%= f.text_field :subject, placeholder: "Subject...", :class=>"pure-input-2-3" %>
   </div>
-  <div class="">
-    <%= f.text_area :content, placeholder: "Message..." %>
+  <div class="field pure-control-group">
+  	<%= label(:content, "Message") %>
+    <%= f.text_area :content, placeholder: "Message...", :class=>"pure-input-2-3" %>
   </div>
-  <div class="">
-    <%= number_field_tag :send_to_id, placeholder: "User ID" %>
+  <div class="field pure-control-group">
+  	<%= label(:send_to_id, "Recipient ID") %>
+    <%= number_field_tag :send_to_id, placeholder: "User ID", :class=>"pure-input-2-3" %>
   </div>
   <%= f.submit "Post", class: "" %>
+  </fieldset>
 <% end %>

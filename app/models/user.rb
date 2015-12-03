@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
   	( 100 ** (1 + ( (level-2) /10.0) ) ).to_i
   end
   
+  # Activation and session code based on
+  # guidance and code from https://www.railstutorial.org/
   
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -128,12 +130,12 @@ class User < ActiveRecord::Base
   
   private
 
-    # Converts email to all lower-case.
+    # Converts email to lowercase for standardization
     def downcase_email
       self.email = email.downcase
     end
 
-    # Creates and assigns the activation token and digest.
+    # Creates teh activation token and digest and assigns it
     def create_activation_digest
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
