@@ -127,6 +127,10 @@ class User < ActiveRecord::Base
 		return true if msg_count > 0
 		false
 	end
+	
+	def forem_name
+  	self.name
+	end
   
   private
 

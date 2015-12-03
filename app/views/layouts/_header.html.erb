@@ -66,7 +66,7 @@
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Label</a></li>
                 <li class="pure-menu-item"><%= link_to "Directory", users_path, class:'pure-menu-link' %></li>
                 <li class="pure-menu-item"><%= link_to "Mail", inbox_path, class:'pure-menu-link' %></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Forums</a></li>
+                <li class="pure-menu-item"><%= link_to "Forums", forem_path, class:'pure-menu-link' %></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Account</a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Help</a></li>
                 <% if current_user and current_user.admin? %><li class="pure-menu-item"><%= link_to "Admin", admin_path, class:'pure-menu-link' %></li><% end %>

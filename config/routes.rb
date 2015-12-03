@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+
+  # This line mounts Forem's routes at /forums by default.
+  # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
+  # If you would like to change where this extension is mounted, simply change the :at option to something different.
+  #
+  # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
+  mount Forem::Engine, :at => '/forums'
+
   resources :dun_events
   resources :dungeons
   resources :newsposts
@@ -18,6 +26,7 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
   post 'users/:id' => 'users#refresh' # is this necessary?
   get 'resetmotivation' => 'application#reset_all_users_motivation' 
+  get 'users/sign_in', :to => "sessions#new"
   resources :users
   resources :account_activations, only: [:edit]
   resources :messages,          only: [:create, :destroy]

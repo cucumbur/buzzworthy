@@ -1,3 +1,26 @@
+GIT
+  remote: git://github.com/radar/forem-bootstrap.git
+  revision: 10be50afc1d0a22af1306076e41624c55fc585be
+  specs:
+    forem-bootstrap (0.0.1)
+      bootstrap-sass (~> 3.1)
+
+GIT
+  remote: git://github.com/radar/forem.git
+  revision: cef46620be4d5b8764b45f1143a3cbcc36daa512
+  branch: rails4
+  specs:
+    forem (1.0.0.beta1)
+      cancancan (~> 1.7)
+      decorators (~> 1.0.2)
+      friendly_id (~> 5.0.0)
+      gemoji (= 2.1.0)
+      rails (~> 4.0, != 4.2.3, != 4.2.2, != 4.2.1, != 4.2.0)
+      sanitize (= 2.0.6)
+      select2-rails (~> 3.5.4)
+      simple_form (~> 3.0)
+      workflow (= 1.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,11 +61,18 @@ GEM
       tzinfo (~> 1.1)
     ansi (1.5.0)
     arel (6.0.3)
+    autoprefixer-rails (6.1.2)
+      execjs
+      json
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.6)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.2)
     byebug (6.0.2)
+    cancancan (1.13.1)
     chronic (0.10.2)
     coderay (1.1.0)
     coffee-rails (4.1.0)
@@ -53,12 +83,16 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     debug_inspector (0.0.2)
+    decorators (1.0.5)
+      railties (>= 3.0.19)
     erubis (2.7.0)
     execjs (2.6.0)
     faker (1.5.0)
       i18n (~> 0.5)
     ffi (1.9.10)
     formatador (0.2.5)
+    friendly_id (5.0.5)
+      activerecord (>= 4.0.0)
     gemoji (2.1.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -153,6 +187,8 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.2.0)
     ruby-progressbar (1.7.5)
+    sanitize (2.0.6)
+      nokogiri (>= 1.4.4)
     sass (3.4.19)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -163,7 +199,12 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    select2-rails (3.5.9.3)
+      thor (~> 0.14)
     shellany (0.0.1)
+    simple_form (3.2.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     slop (3.6.0)
     spring (1.4.0)
     sprockets (3.4.0)
@@ -191,6 +232,7 @@ GEM
     whenever (0.9.4)
       chronic (>= 0.6.3)
     will_paginate (3.0.7)
+    workflow (1.0.0)
 
 PLATFORMS
   ruby
@@ -200,6 +242,8 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   faker
+  forem!
+  forem-bootstrap!
   gemoji
   guard
   guard-minitest
