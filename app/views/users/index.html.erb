@@ -19,7 +19,7 @@
     <% @users.each do |user| %>
       <tr>
         <% if current_user.admin? %><td><%= user.email %></td><% end %>
-        <td><%= user.name %></td>
+        <td><%= link_to user.name, user %></td>
         <td><%= user.bio %></td>
         <td><%= user.level %></td>
         <td><%= user.genre %></td>

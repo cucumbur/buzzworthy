@@ -57,7 +57,7 @@
         <ul class="pure-menu-list">
             <li class="pure-menu-item"><%= link_to "Home", root_path,  class: 'pure-menu-link' %></li>
             <% if logged_in? %>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Artist</a></li>
+                <li class="pure-menu-item"><%= link_to "Artist", current_user, class:'pure-menu-link' %></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Items</a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Downtown</a></li>
                 <li class="pure-menu-item"><%= link_to "Shows", shows_path, class:'pure-menu-link' %></li>
@@ -69,7 +69,7 @@
                 <li class="pure-menu-item"><%= link_to "Forums", forem_path, class:'pure-menu-link' %></li>
                 <li class="pure-menu-item"><%= link_to "Chat", togglechat_path, class:'pure-menu-link' %></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Account</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link" style="color: #8c8c8c">Help</a></li>
+                <li class="pure-menu-item"><%= link_to "Help", help_path, class:'pure-menu-link' %></li>
                 <% if current_user and current_user.admin? %><li class="pure-menu-item"><%= link_to "Admin", admin_path, class:'pure-menu-link' %></li><% end %>
                 <li class="pure-menu-item"><%= link_to "Logout", logout_path, method: "delete", class:'pure-menu-link' %></li>
             <% else %>

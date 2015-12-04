@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204040512) do
+ActiveRecord::Schema.define(version: 20151204070316) do
 
   create_table "dun_events", force: :cascade do |t|
     t.string   "name"
@@ -179,6 +179,8 @@ ActiveRecord::Schema.define(version: 20151204040512) do
     t.boolean  "forem_admin",          default: false
     t.string   "forem_state",          default: "pending_review"
     t.boolean  "forem_auto_subscribe", default: false
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
 end

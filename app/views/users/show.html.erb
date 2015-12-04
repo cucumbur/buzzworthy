@@ -1,59 +1,66 @@
 <% provide(:title, @user.name + "'s profile") %>
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<div class="content">
 
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Bio:</strong>
-  <%= @user.bio %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @user.level %>
-</p>
-
-<% if current_user and current_user == @user %>
-	<p>
-	  <strong>Buzz:</strong>
-	  <%= @user.buzz %>
-	</p>
-	
-	<p>
-	  <strong>Max motivation:</strong>
-	  <%= @user.max_motivation %>
-	</p>
-	
-	<p>
-	  <strong>Cur motivation:</strong>
-	  <%= @user.cur_motivation %>
-	</p>
-	
-	<p>
-	  <strong>Max dignity:</strong>
-	  <%= @user.max_dignity %>
-	</p>
-	
-	<p>
-	  <strong>Cur dignity:</strong>
-	  <%= @user.cur_dignity %>
-	</p>
-	
-	<p>
-	  <strong>Max strangepoints:</strong>
-	  <%= @user.max_strangepoints %>
-	</p>
-	
-	<p>
-	  <strong>Cur strangepoints:</strong>
-	  <%= @user.cur_strangepoints %>
-	</p>
-<% end %>
-<%= link_to 'Edit', edit_user_path(@user) if current_user and current_user.admin? %>
+	<img src="http://placehold.it/400x400">
+	<div style="display:inline-block">
+		<h2 class="content-subhead"><%= @user.name %></h2>
+	    <p>
+	        <%= emojify(@user.bio) %>
+	    </p>
+		
+		<p>
+		  <strong>Level:</strong>
+		  <%= @user.level %>
+		</p>
+		
+		<p>
+		  <strong>Member Since:</strong>
+		  <%= @user.created_at.to_formatted_s(:long)  %>
+		</p>
+		
+		<% if current_user and ( (current_user == @user) or (current_user.admin?)) %>
+			<p>
+			  <strong>Buzz:</strong>
+			  <%= @user.buzz %>
+			</p>
+			
+			<p>
+			  <strong>Max motivation:</strong>
+			  <%= @user.max_motivation %>
+			</p>
+			
+			<p>
+			  <strong>Cur motivation:</strong>
+			  <%= @user.cur_motivation %>
+			</p>
+			
+			<p>
+			  <strong>Max dignity:</strong>
+			  <%= @user.max_dignity %>
+			</p>
+			
+			<p>
+			  <strong>Cur dignity:</strong>
+			  <%= @user.cur_dignity %>
+			</p>
+			
+			<p>
+			  <strong>Max strangepoints:</strong>
+			  <%= @user.max_strangepoints %>
+			</p>
+			
+			<p>
+			  <strong>Cur strangepoints:</strong>
+			  <%= @user.cur_strangepoints %>
+			</p>
+		<% end %>
+		<% if current_user and current_user.admin? %>
+		<em>Admin Only Stuff</em>
+			<p>
+		  	<strong>Email:</strong>
+		  	<%= @user.email %>
+			</p>
+			<%= link_to 'Edit', edit_user_path(@user) %>
+		<% end %>
+	</div>
+</div>

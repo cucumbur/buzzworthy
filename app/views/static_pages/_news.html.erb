@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="content-subhead">News</h2>
+<h1 class="content-subhead">News</h1>
 
 
 
@@ -15,7 +15,7 @@
 	      	
 	      	<!--<tr class="<%= rowcolor_other %>"> This class might need to be taken away if it looks weird-->
 	      		<td><h3><%= newspost.title %></h3>
-	      		by <%= link_to User.find(newspost.user_id).name, User.find(newspost.user_id) %> on <%= newspost.created_at %></td>
+	      		by <%= link_to User.find(newspost.user_id).name, User.find(newspost.user_id) %> on <%= newspost.created_at.to_formatted_s(:long) %></td>
 	 
 	      	</tr>
 	      	<tr class ="<%= rowcolor %>" >

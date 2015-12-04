@@ -1,0 +1,21 @@
+<% provide(:title, 'Forgot Password') %>
+<%= render 'layouts/header_blurb' %>
+
+<div class="content">
+    <h2 class="content-subhead">Forgot Password</h2>
+    <%= form_for(:password_reset, url: password_resets_path, :html => {:class => "pure-form pure-form-aligned"} ) do |f| %>
+
+        <fieldset>
+            <legend></legend>
+            <div class="field pure-control-group">
+	            <%= f.label :email %>
+	            <%= f.email_field :email, :class=>"pure-input-2-3" %>
+						</div>
+						<div class="actions pure-controls">
+	            <%= f.submit "Submit", class: "pure-button pure-button-primary" %>
+            </div>      
+        </fieldset>
+    <% end %>
+
+
+</div>

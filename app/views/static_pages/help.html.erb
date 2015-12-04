@@ -1,2 +1,34 @@
-<h1>StaticPages#help</h1>
-<p>Find me in app/views/static_pages/help.html.erb</p>
+<% provide(:title, 'Help') %>
+<%= render 'layouts/header_blurb' %>
+
+<div class="content">
+    <h2 class="content-subhead">Help, FAQ, Contact Info, and Other Junk</h2>
+    <h3>What is Buzzworthy, really?</h3>
+    <p>
+        Buzzworthy is a browser-based, social network / RPG-lite. It is 
+        developed in Rails as a student project.
+    </p>
+		<h3>How do I play this?</h3>
+    <p>
+        Errr, the mechanics aren't fully fleshed out / implemented yet. I'll get
+        back to you on that one. In the meantime, here are the basics of how the
+        stats works:<br>
+        Motivation is your daily "energy" that you can use to perform/attend shows<br>
+        Dignity is basically health points<br>
+        Buzz is basically experience points<br>
+        Strange points are basically mana points<br>
+        Verve is strength, heart is constitution, allure is charisma, strangeness is magic, and serendipity is luck.<br>
+        Shows are dungeons, and events in dungeons are random encounters.<br>
+        Motivation resets daily at midnight.
+    </p>
+    <h3>WHO DID THIS</h3>
+    <p>
+        I'm Rick, a student at University of Illinois, Urbana-Champaign. Contact me at rssheah2@illinois.edu or visit
+        my portfolio website at <a href="http://www.rsheahan.net">rsheahan.net</a>. <%= emojify(":kissing_heart:") %> Also,
+        i'm on twitter @cucumbur but honestly you really don't want to follow me.
+    </p>
+    <h3>Bug Reports, feature suggestions, complaints, ideas</h3>
+    <p>
+    	I want to continue developing Buzzworthy, so I would love to hear all this stuff. Post them on the forums or send me an email.
+    </p>
+</div>
