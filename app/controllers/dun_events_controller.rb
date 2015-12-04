@@ -1,6 +1,8 @@
 class DunEventsController < ApplicationController
   before_action :set_dun_event, only: [:show, :edit, :update, :destroy]
-
+	before_action :logged_in_user
+  before_action :admin_user, only: [:destroy, :new, :edit, :create, :update, :destroy]
+  
   # GET /dun_events
   def index
     @dun_events = DunEvent.all

@@ -16,6 +16,15 @@ class ApplicationController < ActionController::Base
   	redirect_to admin_path
   end
   
+  def toggle_chat
+  	if !session[:chat_enable].nil?
+  		session[:chat_enable] = !(session[:chat_enable])
+  	else
+  		session[:chat_enable] = true
+  	end
+  	redirect_to root_path
+  end
+ 
   
   private
   

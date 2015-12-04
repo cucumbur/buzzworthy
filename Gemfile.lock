@@ -143,6 +143,7 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     pg (0.18.3)
+    pickup (0.0.11)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -252,6 +253,7 @@ DEPENDENCIES
   minitest-reporters
   normalize-rails
   pg
+  pickup
   puma
   pure-css-rails
   rails (= 4.2.4)

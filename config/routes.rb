@@ -26,7 +26,9 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
   post 'users/:id' => 'users#refresh' # is this necessary?
   get 'resetmotivation' => 'application#reset_all_users_motivation' 
+  get 'togglechat' => 'application#toggle_chat' 
   get 'users/sign_in', :to => "sessions#new"
+  
   resources :users
   resources :account_activations, only: [:edit]
   resources :messages,          only: [:create, :destroy]

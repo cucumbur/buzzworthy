@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203223942) do
+ActiveRecord::Schema.define(version: 20151204040512) do
 
   create_table "dun_events", force: :cascade do |t|
     t.string   "name"
@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(version: 20151203223942) do
   create_table "dungeons", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "events",      default: ""
   end
 
   create_table "forem_categories", force: :cascade do |t|

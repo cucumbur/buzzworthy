@@ -41,6 +41,7 @@ gem 'will_paginate'
 gem 'gemoji'
 gem 'forem', :github => "radar/forem", :branch => "rails4"
 gem 'forem-bootstrap', :github => "radar/forem-bootstrap"
+gem 'pickup'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

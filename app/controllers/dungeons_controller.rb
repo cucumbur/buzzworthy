@@ -1,6 +1,8 @@
 class DungeonsController < ApplicationController
   before_action :set_dungeon, only: [:show, :edit, :update, :destroy]
-
+	before_action :logged_in_user
+  before_action :admin_user, only: [:destroy, :new, :edit, :create, :update, :destroy]
+  
   # GET /dungeons
   def index
   	redirect_to dead_path if current_user.dead?
@@ -17,7 +19,8 @@ class DungeonsController < ApplicationController
 				redirect_to shows_path
 			else
 				# Get a random event from the events stack
-				@random_event = DunEvent.offset(rand(DunEvent.count)).first
+				#@random_event = DunEvent.offset(rand(DunEvent.count)).first
+				@random_event = DunEvent.find( Dungeon.find(params[:id]).get_random_event )
 				handle_effect(@random_event.effect)
 				
 				# Knock off 10 motivation
@@ -73,7 +76,7 @@ class DungeonsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def dungeon_params
-      params.require(:dungeon).permit(:name, :description)
+      params.require(:dungeon).permit(:name, :description, :events)
     end
     
     # Every event has an effect, and this decodes that and decides how to respond
